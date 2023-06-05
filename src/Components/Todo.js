@@ -7,6 +7,7 @@ import { IoMdDoneAll } from "react-icons/io";
 function Todo() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
+  const [editId , setEditId]  = useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,6 +41,14 @@ function Todo() {
   setTodos(complete)
   }
 
+  const onEdit = (id) =>{
+    const editTodo = todos.find((to)=> to.id === id)
+  
+    setTodo(editTodo.list)
+    setEditId(editTodo.id)
+    console.log(editTodo);
+  }
+
   return (
     <div className="container">
       <h2>TODO APP</h2>
@@ -52,7 +61,7 @@ function Todo() {
           placeholder="Enter Your Todo"
           onChange={(event) => setTodo(event.target.value)}
         />
-        <button onClick={addTodo}>ADD</button>
+        <button onClick={addTodo}>{editId ? 'EDIT' : 'ADD'} </button>
       </form>
       <div className="list">
         <ul>
@@ -71,6 +80,7 @@ function Todo() {
                   className="list-item-icons" 
                   title="Edit" 
                   id="edit" 
+                  onClick={()=>onEdit(obj.id)}
                 />
                 <MdDelete
                   className="list-item-icons"
