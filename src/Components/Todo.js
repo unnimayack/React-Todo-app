@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import { FiEdit } from "react-icons/fi";
 import { IoMdDoneAll } from "react-icons/io";
+import { FaPenNib } from "react-icons/fa";
+
 function Todo() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
@@ -18,6 +20,16 @@ function Todo() {
     setTodos([...todos, {list : todo , id : Date.now() , status:false}]);
     console.log(todos);
     setTodo("");
+    }
+    if(editId){
+      const editTodo = todos.find((todo)=>todo.id === editId)
+      const updateTodo = todos.map((obj)=>obj.id === editTodo.id
+      ?(obj = {id : obj.id ,list : todo})
+      : (obj = {id : obj.id ,list : obj.list}))
+      setTodos(updateTodo)
+      setEditId(0)
+      setTodo('')
+
     }
   };
 
@@ -49,9 +61,14 @@ function Todo() {
     console.log(editTodo);
   }
 
+  const allClear = ()=>{
+    setTodos([])
+  }
+
   return (
     <div className="container">
-      <h2>TODO APP</h2>
+      <h1>TODO APP</h1>
+      <p><span className="pencil"><FaPenNib/></span>Get things done! Make your day organized...</p>
       <form onSubmit={handleSubmit} className="form-group">
         <input
           className="form-control"
@@ -93,6 +110,7 @@ function Todo() {
           ))}
         </ul>
       </div>
+      <button  onClick={allClear} className="clear-button">All Clear</button>
     </div>
   );
 }

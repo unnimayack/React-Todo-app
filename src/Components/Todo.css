@@ -1,14 +1,26 @@
+
 .container{
     width: 40%;
     margin-top: 50px;
     border: none;
     padding: 30px;
     border-radius: 10px;
-    background-color: #012727d7;
+    background-color:   #044947 ;
+    opacity: 0.9;
+ 
 }
-h2{
+h1{
     text-align: center;
     color: white;
+}
+p{
+    color: white;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.pencil{
+    font-size: 20px;
+    margin-right: 6px;
 }
 .form-group{
     display: flex;
@@ -25,6 +37,9 @@ button{
     width: 20%;
     font-weight: bold;
    cursor: pointer;
+}
+button:hover{
+    background-color:#0f5856 ;
 }
 .list{
     margin-top: 30px !important;
@@ -61,4 +76,13 @@ li{
 #list-item{
     text-decoration: line-through;
     opacity: 0.3;
+}
+.clear-button{
+    width: 88px;
+    height: 45px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 35%;
+    margin-top: 10px;
+   
 }
