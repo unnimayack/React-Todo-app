@@ -39,3 +39,22 @@ li{
     border-radius: 5px;
     padding: 10px;
 }
+.list-items{
+    display: flex;
+}
+.list-items .list-item-list{
+    flex:1;
+}
+.list-items .list-item-icons{
+    padding-left: 5px;
+    font-size: 25px;
+}
+#complete{
+    color:green;
+}
+#edit{
+    color:blue;
+}
+#delete{
+    color:orangered;
+}
