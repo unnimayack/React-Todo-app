@@ -13,9 +13,11 @@ function Todo() {
   };
 
   const addTodo = () => {
+    if(todo !== ''){
     setTodos([...todos, {list : todo , id : Date.now() , status:false}]);
     console.log(todos);
     setTodo("");
+    }
   };
 
   const inputRef = useRef("null");
@@ -63,8 +65,13 @@ function Todo() {
                   title="Complete"
                   id="complete"
                   onClick={()=>onComplete(obj.id)}
+                 
                 />
-                <FiEdit className="list-item-icons" title="Edit" id="edit" />
+                <FiEdit 
+                  className="list-item-icons" 
+                  title="Edit" 
+                  id="edit" 
+                />
                 <MdDelete
                   className="list-item-icons"
                   title="Delete"
