@@ -13,7 +13,7 @@ function Todo() {
   };
 
   const addTodo = () => {
-    setTodos([...todos, {list : todo , id : Date.now()}]);
+    setTodos([...todos, {list : todo , id : Date.now() , status:false}]);
     console.log(todos);
     setTodo("");
   };
@@ -26,6 +26,16 @@ function Todo() {
 
   const onDelete = (id) =>{
     setTodos(todos.filter((list) => list.id !== id))
+  }
+
+  const onComplete = (id) =>{
+    let complete = todos.map((list)=>{
+      if(list.id === id){
+      return({...list, status : !list.status})
+      }
+    return list
+  })
+  setTodos(complete)
   }
 
   return (
@@ -46,12 +56,13 @@ function Todo() {
         <ul>
           {todos.map((obj) => (
             <li className="list-items">
-              <div className="list-item-list">{obj.list}</div>
+              <div className="list-item-list" id={obj.status ? 'list-item' : '' }>{obj.list} </div>
               <span>
                 <IoMdDoneAll
                   className="list-item-icons"
                   title="Complete"
                   id="complete"
+                  onClick={()=>onComplete(obj.id)}
                 />
                 <FiEdit className="list-item-icons" title="Edit" id="edit" />
                 <MdDelete

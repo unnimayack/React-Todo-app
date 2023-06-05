@@ -58,3 +58,7 @@ li{
 #delete{
     color:orangered;
 }
+#list-item{
+    text-decoration: line-through;
+    opacity: 0.3;
+}
